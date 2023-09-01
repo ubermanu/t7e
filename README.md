@@ -1,6 +1,13 @@
 # @ubermanu/translate
 
-A simple translation utility.
+This package provides a simple translation system for JavaScript applications.
+
+## Features
+
+- A single function (template literal) to translate strings
+- A default lexicon that defaults to English
+- Supports placeholders in translation strings
+- Supports pluralization in translation strings, according to the CLDR rules
 
 ## Installation
 
@@ -11,9 +18,22 @@ npm install @ubermanu/translate
 ## Usage
 
 ```javascript
-import { t } from '@ubermanu/translate';
+import { Dictionary, registerDictionary, t } from '@ubermanu/translate'
 
-t`Hello, world!`; // Hello, world!
+const dict = new Dictionary('jp')
+
+dict.addTranslation({
+  id: 'Hello, %s!',
+  strings: ['こんにちは、%s！'],
+})
+
+registerDictionary(dict)
+
+const username = 'John'
+t`Hello, ${username}!` // Hello, John！
+
+setLocale('jp')
+t`Hello, ${username}!` // こんにちは、John！
 ```
 
 ## API
@@ -22,45 +42,50 @@ t`Hello, world!`; // Hello, world!
 
 Translates a string in the defined locale, using a template literal.
 
-```text
-msgid "Hello!"
-msgstr "Salut!"
+```json
+{
+  "id": "Hello!",
+  "strings": ["Salut!"]
+}
 ```
 
 ```javascript
-import { t } from '@ubermanu/translate';
+import { t } from '@ubermanu/translate'
 
-t`Hello!`; // Salut!
+t`Hello!` // Salut!
 ```
 
 Supports placeholders, if defined in the translation:
 
-```text
-msgid "Hello, %s!"
-msgstr "Salut, %s!"
+```json
+{
+  "id": "Hello, %s!",
+  "strings": ["Salut, %s!"]
+}
 ```
 
 ```javascript
-import { t } from '@ubermanu/translate';
+import { t } from '@ubermanu/translate'
 
-const name = 'John';
-t`Hello, ${name}!`; // Salut, John!
+const name = 'John'
+t`Hello, ${name}!` // Salut, John!
 ```
 
 Supports pluralization:
 
-```text
-msgid "You have %d new message."
-msgid_plural "You have %d new messages."
-msgstr[0] "Vous avez %d nouveau message."
-msgstr[1] "Vous avez %d nouveaux messages."
+```json
+{
+    "id": "You have %d new message.",
+    "plural": "You have %d new messages.",
+    "strings": ["Vous avez %d nouveau message.", "Vous avez %d nouveaux messages."]
+}
 ```
 
 ```javascript
-import { t } from '@ubermanu/translate';
+import { t } from '@ubermanu/translate'
 
-t`You have ${1} new message.`; // Vous avez 1 nouveau message.
-t`You have ${877} new message.`; // Vous avez 877 nouveaux messages.
+t`You have ${1} new message.` // Vous avez 1 nouveau message.
+t`You have ${877} new message.` // Vous avez 877 nouveaux messages.
 ```
 
 ### getLocale
@@ -68,9 +93,9 @@ t`You have ${877} new message.`; // Vous avez 877 nouveaux messages.
 Returns the current locale. Defaults to `en`.
 
 ```javascript
-import { getLocale } from '@ubermanu/translate';
+import { getLocale } from '@ubermanu/translate'
 
-getLocale(); // en
+getLocale() // en
 ```
 
 ### setLocale
@@ -78,7 +103,34 @@ getLocale(); // en
 Sets the current locale in the ISO 639-1 format.
 
 ```javascript
-import { setLocale } from '@ubermanu/translate';
+import { setLocale } from '@ubermanu/translate'
 
-setLocale('fr');
+setLocale('fr')
+```
+
+### detectLocale
+
+Detects the current locale, using the current process' environment variables or the browser's `navigator.language`.
+
+```javascript
+import { detectLocale } from '@ubermanu/translate'
+
+detectLocale() // the locale has been set to `xx`
+```
+
+### registerDictionary
+
+Registers a dictionary for a given language, in the global lexicon.
+
+```javascript
+import { registerDictionary, Dictionary } from '@ubermanu/translate'
+
+const dict = new Dictionary('fr')
+
+dict.addTranslation({
+  id: 'Hello!',
+  strings: ['Salut!'],
+})
+
+registerDictionary(dict)
 ```
