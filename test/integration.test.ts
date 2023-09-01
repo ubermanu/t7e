@@ -42,3 +42,30 @@ test('translate a string with plural form (literal)', (t) => {
   t.is(tt`You have ${1} message.`, 'Vous avez 1 message.')
   t.is(tt`You have ${2} message.`, 'Vous avez 2 messages.')
 })
+
+test('translate a string with context (literal)', (t) => {
+  dict.addTranslation({
+    id: 'You are tall',
+    strings: ['Tu es grand'],
+    context: 'm',
+  })
+
+  dict.addTranslation({
+    id: 'You are tall',
+    strings: ['Tu es grande'],
+    context: 'f',
+  })
+
+  dict.addTranslation({
+    id: 'You are tall',
+    strings: ['Tu es grand(e)'],
+  })
+
+  const tu = tt.context('') // default context
+  const tm = tt.context('m') // masculine context
+  const tf = tt.context('f') // feminine context
+
+  t.is(tu`You are tall`, 'Tu es grand(e)')
+  t.is(tm`You are tall`, 'Tu es grand')
+  t.is(tf`You are tall`, 'Tu es grande')
+})

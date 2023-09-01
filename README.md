@@ -8,6 +8,7 @@ This package provides a simple translation system for JavaScript applications.
 - A default lexicon that defaults to English
 - Supports placeholders in translation strings
 - Supports pluralization in translation strings, according to the CLDR rules
+- Supports contextualization in translation strings
 
 ## Installation
 
@@ -89,6 +90,38 @@ import { t } from '@ubermanu/translate'
 
 t`You have ${1} new message.` // Vous avez 1 nouveau message.
 t`You have ${877} new message.` // Vous avez 877 nouveaux messages.
+```
+
+Supports contextualization:
+
+```json
+{
+  "id": "Welcome Mr %s",
+  "strings": ["Bienvenue M. %s"],
+  "context": "m"
+}
+```
+
+```json
+{
+  "id": "Welcome Mr %s",
+  "strings": ["Bienvenue Mme %s"],
+  "context": "f"
+}
+```
+
+```javascript
+import { t } from '@ubermanu/translate'
+
+const data = {
+  firstname: 'Sarah',
+  gender: 'f',
+}
+
+// Generates a new translation function with the given context
+const tx = t.context(data.gender)
+
+tx`Welcome Mr ${data.firstname}` // Bienvenue Mme Sarah
 ```
 
 ### getLocale

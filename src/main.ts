@@ -1,3 +1,4 @@
+import type { TranslateOptions } from './dictionary.js'
 import { Lexicon } from './lexicon.js'
 import { getLocale } from './locale.js'
 
@@ -24,10 +25,12 @@ export const registerDictionary = lex.registerDictionary.bind(lex)
  *
  * If a value is a number, it will be formatted using the dictionary's plural
  * form.
- *
- * TODO: Add support for date, time, currency formatting.
  */
-export function t(strings: TemplateStringsArray, ...values: any[]) {
+function process_template_literal(
+  strings: TemplateStringsArray,
+  values: any[],
+  options?: TranslateOptions
+): string {
   let count = undefined
 
   // Transforms the template string into a single string with placeholders (%s)
@@ -43,5 +46,21 @@ export function t(strings: TemplateStringsArray, ...values: any[]) {
     return acc + str + '%s'
   }, '')
 
-  return lex.translate(token, getLocale(), { count, values })
+  return lex.translate(token, getLocale(), {
+    ...options,
+    count,
+    values,
+  })
+}
+
+/** Translate a string using the current locale. */
+export function t(strings: TemplateStringsArray, ...values: any[]): string {
+  return process_template_literal(strings, values)
+}
+
+/** Generate a new function that translates a string in a specific context. */
+t.context = function (context: string) {
+  return (strings: TemplateStringsArray, ...values: any[]) => {
+    return process_template_literal(strings, values, { context })
+  }
 }
