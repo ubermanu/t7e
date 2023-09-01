@@ -7,11 +7,11 @@ export default [
     input: 'src/main.ts',
     output: [
       {
-        file: 'dist/t7e.mjs',
+        file: 'dist/translate.mjs',
         format: 'es',
       },
       {
-        file: 'dist/t7e.cjs',
+        file: 'dist/translate.cjs',
         format: 'cjs',
       },
     ],
@@ -20,7 +20,7 @@ export default [
   {
     input: 'src/main.ts',
     output: {
-      file: 'dist/t7e.d.ts',
+      file: 'dist/translate.d.ts',
       format: 'es',
     },
     plugins: [typescript(), dts()],

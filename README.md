@@ -1,17 +1,17 @@
-# t7e
+# @ubermanu/translate
 
 A simple translation utility.
 
 ## Installation
 
 ```bash
-npm install t7e
+npm install @ubermanu/translate
 ```
 
 ## Usage
 
 ```javascript
-import { t } from 't7e';
+import { t } from '@ubermanu/translate';
 
 t`Hello, world!`; // Hello, world!
 ```
@@ -28,7 +28,7 @@ msgstr "Salut!"
 ```
 
 ```javascript
-import { t } from 't7e';
+import { t } from '@ubermanu/translate';
 
 t`Hello!`; // Salut!
 ```
@@ -41,7 +41,7 @@ msgstr "Salut, %s!"
 ```
 
 ```javascript
-import { t } from 't7e';
+import { t } from '@ubermanu/translate';
 
 const name = 'John';
 t`Hello, ${name}!`; // Salut, John!
@@ -57,7 +57,7 @@ msgstr[1] "Vous avez %d nouveaux messages."
 ```
 
 ```javascript
-import { t } from 't7e';
+import { t } from '@ubermanu/translate';
 
 t`You have ${1} new message.`; // Vous avez 1 nouveau message.
 t`You have ${877} new message.`; // Vous avez 877 nouveaux messages.
@@ -68,7 +68,7 @@ t`You have ${877} new message.`; // Vous avez 877 nouveaux messages.
 Returns the current locale. Defaults to `en`.
 
 ```javascript
-import { getLocale } from 't7e';
+import { getLocale } from '@ubermanu/translate';
 
 getLocale(); // en
 ```
@@ -78,7 +78,7 @@ getLocale(); // en
 Sets the current locale in the ISO 639-1 format.
 
 ```javascript
-import { setLocale } from 't7e';
+import { setLocale } from '@ubermanu/translate';
 
 setLocale('fr');
 ```

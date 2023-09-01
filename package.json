@@ -1,5 +1,5 @@
 {
-  "name": "t7e",
+  "name": "@ubermanu/translate",
   "version": "0.1.0",
   "description": "Another translation utility",
   "keywords": [
@@ -10,14 +10,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ubermanu/t7e.git"
+    "url": "git+https://github.com/ubermanu/translate.git"
   },
   "license": "MIT",
   "author": "Emmanuel Vodor <manu@paca.happy-dev.fr>",
   "type": "module",
-  "main": "dist/t7e.cjs",
-  "module": "dist/t7e.mjs",
-  "types": "dist/t7e.d.ts",
+  "main": "dist/translate.cjs",
+  "module": "dist/translate.mjs",
+  "types": "dist/translate.d.ts",
   "files": [
     "dist"
   ],
