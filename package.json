@@ -15,6 +15,13 @@
   "license": "MIT",
   "author": "Emmanuel Vodor <manu@paca.happy-dev.fr>",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/translate.mjs",
+      "require": "./dist/translate.cjs",
+      "types": "./dist/translate.d.ts"
+    }
+  },
   "main": "dist/translate.cjs",
   "module": "dist/translate.mjs",
   "types": "dist/translate.d.ts",
