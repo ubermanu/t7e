@@ -1,0 +1,22 @@
+name: continuous-integration
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+concurrency:
+  group: 'continuous-integration'
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.7.1
+      - run: pnpm install
+      - run: pnpm run build
+      - run: pnpm run test
