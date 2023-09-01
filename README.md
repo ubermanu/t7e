@@ -76,7 +76,7 @@ Supports pluralization:
 ```json
 {
   "id": "You have %d new message.",
-  "plural": "You have %d new messages.",
+  "plural_id": "You have %d new messages.",
   "strings": [
     "Vous avez %d nouveau message.",
     "Vous avez %d nouveaux messages."
