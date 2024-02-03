@@ -1,7 +1,7 @@
 {
-  "name": "@ubermanu/translate",
-  "version": "0.2.0",
-  "description": "Another translation utility",
+  "name": "transplate",
+  "version": "0.3.0",
+  "description": "A template based translation utility",
   "keywords": [
     "translate",
     "translation",
@@ -10,21 +10,21 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ubermanu/translate.git"
+    "url": "git+https://github.com/ubermanu/transplate.git"
   },
   "license": "MIT",
   "author": "Emmanuel Vodor <manu@paca.happy-dev.fr>",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/translate.mjs",
-      "require": "./dist/translate.cjs",
-      "types": "./dist/translate.d.ts"
+      "import": "./dist/transplate.mjs",
+      "require": "./dist/transplate.cjs",
+      "types": "./dist/transplate.d.ts"
     }
   },
-  "main": "dist/translate.cjs",
-  "module": "dist/translate.mjs",
-  "types": "dist/translate.d.ts",
+  "main": "dist/transplate.cjs",
+  "module": "dist/transplate.mjs",
+  "types": "dist/transplate.d.ts",
   "files": [
     "dist"
   ],

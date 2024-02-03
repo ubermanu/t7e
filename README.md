@@ -1,4 +1,4 @@
-# @ubermanu/translate
+# transplate
 
 This package provides a simple translation system for JavaScript applications.
 
@@ -13,7 +13,7 @@ This package provides a simple translation system for JavaScript applications.
 ## Installation
 
 ```bash
-npm install @ubermanu/translate
+npm install transplate
 ```
 
 ## Usage
