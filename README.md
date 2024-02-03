@@ -5,10 +5,10 @@ This package provides a simple translation system for JavaScript applications.
 ## Features
 
 - A single function (template literal) to translate strings
-- A default lexicon that defaults to English
-- Supports placeholders in translation strings
-- Supports pluralization in translation strings, according to the CLDR rules
-- Supports contextualization in translation strings
+- A lexicon that defaults to English
+- Supports placeholder formats
+- Supports pluralization, according to the CLDR rules
+- Supports contextualization
 
 ## Installation
 
