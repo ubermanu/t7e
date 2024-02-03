@@ -19,7 +19,7 @@ npm install transplate
 ## Usage
 
 ```javascript
-import { Dictionary, registerDictionary, t } from '@ubermanu/translate'
+import { Dictionary, registerDictionary, t } from 'transplate'
 
 const dict = new Dictionary('jp')
 
@@ -51,7 +51,7 @@ Translates a string in the defined locale, using a template literal.
 ```
 
 ```javascript
-import { t } from '@ubermanu/translate'
+import { t } from 'transplate'
 
 t`Hello!` // Salut!
 ```
@@ -66,7 +66,7 @@ Supports placeholders, if defined in the translation:
 ```
 
 ```javascript
-import { t } from '@ubermanu/translate'
+import { t } from 'transplate'
 
 const name = 'John'
 t`Hello, ${name}!` // Salut, John!
@@ -86,7 +86,7 @@ Supports pluralization:
 ```
 
 ```javascript
-import { t } from '@ubermanu/translate'
+import { t } from 'transplate'
 
 t`You have ${1} new message.` // Vous avez 1 nouveau message.
 t`You have ${877} new message.` // Vous avez 877 nouveaux messages.
@@ -111,7 +111,7 @@ Supports contextualization:
 ```
 
 ```javascript
-import { t } from '@ubermanu/translate'
+import { t } from 'transplate'
 
 const data = {
   firstname: 'Sarah',
@@ -129,7 +129,7 @@ tx`Welcome Mr ${data.firstname}` // Bienvenue Mme Sarah
 Returns the current locale. Defaults to `en`.
 
 ```javascript
-import { getLocale } from '@ubermanu/translate'
+import { getLocale } from 'transplate'
 
 getLocale() // en
 ```
@@ -139,7 +139,7 @@ getLocale() // en
 Sets the current locale in the ISO 639-1 format.
 
 ```javascript
-import { setLocale } from '@ubermanu/translate'
+import { setLocale } from 'transplate'
 
 setLocale('fr')
 ```
@@ -149,7 +149,7 @@ setLocale('fr')
 Detects the current locale, using the current process' environment variables or the browser's `navigator.language`.
 
 ```javascript
-import { detectLocale } from '@ubermanu/translate'
+import { detectLocale } from 'transplate'
 
 detectLocale() // the locale has been set to `xx`
 ```
@@ -159,7 +159,7 @@ detectLocale() // the locale has been set to `xx`
 Registers a dictionary for a given language, in the global lexicon.
 
 ```javascript
-import { registerDictionary, Dictionary } from '@ubermanu/translate'
+import { registerDictionary, Dictionary } from 'transplate'
 
 const dict = new Dictionary('fr')
 
